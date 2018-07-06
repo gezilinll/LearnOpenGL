@@ -11,6 +11,7 @@ include_directories(/Users/linbinghe/CProjects/glad/include)
 
 LINK_DIRECTORIES( /usr/local/lib )
 
-add_executable(LearnOpenGL glad.c main.cpp)
-
-target_link_libraries(LearnOpenGL libglfw3.a)
+# Tutorial 1
+add_executable(tutorial01_first_window
+        glad.c tutorial01_first_window.cpp)
+target_link_libraries(tutorial01_first_window libglfw3.a)
