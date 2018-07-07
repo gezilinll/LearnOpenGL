@@ -15,3 +15,8 @@ LINK_DIRECTORIES( /usr/local/lib )
 add_executable(tutorial01_first_window
         glad.c tutorial01_first_window.cpp)
 target_link_libraries(tutorial01_first_window libglfw3.a)
+
+# Tutorial 2
+add_executable(tutorial02_red_triangle
+        glad.c tutorial02_red_triangle.cpp)
+target_link_libraries(tutorial02_red_triangle libglfw3.a)
