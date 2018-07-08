@@ -13,7 +13,7 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 LINK_DIRECTORIES( /usr/local/lib )
 
-set(SOURCE_FILES glad.c tutorial02_red_triangle.cpp include/shader_s.h)
+set(SOURCE_FILES glad.c tutorial02_red_triangle.cpp std_image.cpp include/shader_s.h include/stb_image.h)
 
 # Tutorial 1
 add_executable(tutorial01_first_window
