@@ -3,17 +3,20 @@ project(LearnOpenGL)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework AppKit -framework CoreVideo -framework IOKit -framework CoreGraphics -framework CoreFoundation -I/usr/local/include -L/usr/local/lib/ -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework AppKit -framework CoreVideo -framework IOKit -framework CoreGraphics -framework CoreFoundation")
 
 include_directories(/usr/include)
 
 include_directories(/Users/linbinghe/CProjects/glad/include)
 
+include_directories(/Users/linbinghe/Downloads/ogl-2.1_branch/external/glm-0.9.7.1/glm/)
+
 include_directories("${PROJECT_SOURCE_DIR}/include/")
+
 
 LINK_DIRECTORIES( /usr/local/lib )
 
-set(SOURCE_FILES glad.c tutorial02_red_triangle.cpp std_image.cpp include/shader_s.h include/stb_image.h)
+set(SOURCE_FILES glad.c tutorial02_red_triangle.cpp std_image.cpp /Users/linbinghe/Downloads/ogl-2.1_branch/external/glm-0.9.7.1/glm/ include/shader_s.h include/stb_image.h)
 
 # Tutorial 1
 add_executable(tutorial01_first_window
