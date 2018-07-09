@@ -1,4 +1,7 @@
+#需要通过brew安装glfw
+
 cmake_minimum_required(VERSION 3.10)
+
 project(LearnOpenGL)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -7,15 +10,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework AppKit -fra
 
 include_directories(/usr/include)
 
-include_directories(/Users/linbinghe/CProjects/glad/include)
-
-include_directories(/Users/linbinghe/CProjects/glad/include/glm/)
+include_directories(${PROJECT_SOURCE_DIR}/extern/glad/include)
 
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 LINK_DIRECTORIES( /usr/local/lib )
 
-set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp /Users/linbinghe/CProjects/glad/include/glm/ std_image.cpp  include/shader_s.h include/stb_image.h)
+set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp std_image.cpp  include/shader_s.h include/stb_image.h)
 
 # Tutorial 1[入门-第一个窗口]
 add_executable(tutorial01_first_window
@@ -28,29 +29,25 @@ target_link_libraries(tutorial02_red_triangle libglfw3.a)
 
 # getting_started_shader[入门-着色器]
 set(SOURCE_FILES_GETTING_STARTED_SHADER
-        glad.c getting_started/shader/getting_started_shader.cpp std_image.cpp
-        /Users/linbinghe/CProjects/glad/include/glm/ include/shader_s.h include/stb_image.h)
+        glad.c getting_started/shader/getting_started_shader.cpp std_image.cpp)
 add_executable(getting_started_shader ${SOURCE_FILES_GETTING_STARTED_SHADER})
 target_link_libraries(getting_started_shader libglfw3.a)
 
 
 # getting_started_textures_combined[入门-纹理]
 set(SOURCE_FILES_GETTING_STARTED_TEXTURES_COMBINED
-        glad.c getting_started/textures_combined/getting_started_textures_combined.cpp std_image.cpp
-        /Users/linbinghe/CProjects/glad/include/glm/ include/shader_s.h include/stb_image.h)
+        glad.c getting_started/textures_combined/getting_started_textures_combined.cpp std_image.cpp)
 add_executable(getting_started_textures_combined ${SOURCE_FILES_GETTING_STARTED_TEXTURES_COMBINED})
 target_link_libraries(getting_started_textures_combined libglfw3.a)
 
 # getting_started_transformation[入门-变换]
 set(SOURCE_FILES_GETTING_STARTED_TRANSFORMATION
-        glad.c getting_started/transformation/getting_started_transformation.cpp std_image.cpp
-        /Users/linbinghe/CProjects/glad/include/glm/ include/shader_s.h include/stb_image.h)
+        glad.c getting_started/transformation/getting_started_transformation.cpp std_image.cpp)
 add_executable(getting_started_transformation ${SOURCE_FILES_GETTING_STARTED_TRANSFORMATION})
 target_link_libraries(getting_started_transformation libglfw3.a)
 
 # getting_started_coordinate_systems[入门-坐标系]
 set(SOURCE_FILES_GETTING_STARTED_COORDINATE_SYSTEMS
-        glad.c getting_started/coordinate_systems/getting_started_coordinate_systems.cpp std_image.cpp
-        /Users/linbinghe/CProjects/glad/include/glm/ include/shader_s.h include/stb_image.h)
+        glad.c getting_started/coordinate_systems/getting_started_coordinate_systems.cpp std_image.cpp)
 add_executable(getting_started_coordinate_systems ${SOURCE_FILES_GETTING_STARTED_COORDINATE_SYSTEMS})
 target_link_libraries(getting_started_coordinate_systems libglfw3.a)
