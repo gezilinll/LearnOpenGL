@@ -27,6 +27,14 @@ target_link_libraries(tutorial01_first_window libglfw3.a)
 add_executable(tutorial02_red_triangle ${SOURCE_FILES})
 target_link_libraries(tutorial02_red_triangle libglfw3.a)
 
+# getting_started_shader[入门-着色器]
+set(SOURCE_FILES_GETTING_STARTED_SHADER
+        glad.c getting_started_shader.cpp std_image.cpp
+        /Users/linbinghe/Downloads/ogl-2.1_branch/external/glm-0.9.7.1/glm/ include/shader_s.h include/stb_image.h)
+add_executable(getting_started_shader ${SOURCE_FILES_GETTING_STARTED_SHADER})
+target_link_libraries(getting_started_shader libglfw3.a)
+
+
 # getting_started_textures_combined[入门-纹理]
 set(SOURCE_FILES_GETTING_STARTED_TEXTURES_COMBINED
         glad.c getting_started_textures_combined.cpp std_image.cpp
