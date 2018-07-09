@@ -26,3 +26,10 @@ target_link_libraries(tutorial01_first_window libglfw3.a)
 # Tutorial 2
 add_executable(tutorial02_red_triangle ${SOURCE_FILES})
 target_link_libraries(tutorial02_red_triangle libglfw3.a)
+
+# getting_started_coordinate_systems
+set(SOURCE_FILES_GETTING_STARTED_COORDINATE_SYSTEMS
+        glad.c getting_started_coordinate_systems.cpp std_image.cpp
+        /Users/linbinghe/Downloads/ogl-2.1_branch/external/glm-0.9.7.1/glm/ include/shader_s.h include/stb_image.h)
+add_executable(getting_started_coordinate_systems ${SOURCE_FILES_GETTING_STARTED_COORDINATE_SYSTEMS})
+target_link_libraries(getting_started_coordinate_systems libglfw3.a)
