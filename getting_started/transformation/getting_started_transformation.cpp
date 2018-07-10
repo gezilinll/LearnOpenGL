@@ -49,8 +49,8 @@ int main() {
     }
 
     //构建着色器程序
-    Shader ourShader("/Users/linbinghe/CProjects/LearnOpenGL/getting_started/transformation/getting_started_vertex_transformation.glsl",
-                     "/Users/linbinghe/CProjects/LearnOpenGL/getting_started/transformation/getting_started_fragment_transformation.glsl");
+    Shader ourShader("getting_started/transformation/getting_started_vertex_transformation.glsl",
+                     "getting_started/transformation/getting_started_fragment_transformation.glsl");
 
     // 设置顶点数据和属性等
     // ------------------------------------------------------------------
@@ -107,7 +107,7 @@ int main() {
     // 加载图片，创建纹理，生成多级渐远纹理mipmaps
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);//垂直镜像翻转加载的图片
-    unsigned char *data = stbi_load("/Users/linbinghe/CProjects/LearnOpenGL/container.jpg",
+    unsigned char *data = stbi_load("container.jpg",
                                     &width, &height, &nrChannels, 0);
     if (data) {
         // note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
@@ -129,7 +129,7 @@ int main() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // 加载图片，创建纹理，生成多级渐远纹理mipmaps
-    data = stbi_load("/Users/linbinghe/CProjects/LearnOpenGL/awesomeface.png", &width, &height, &nrChannels,
+    data = stbi_load("awesomeface.png", &width, &height, &nrChannels,
                      0);
     if (data) {
         // note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA

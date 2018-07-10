@@ -43,8 +43,8 @@ int main() {
     }
 
     //构建着色器程序
-    Shader ourShader("/Users/linbinghe/CProjects/LearnOpenGL/getting_started/shader/getting_started_vertex_shader.glsl",
-                     "/Users/linbinghe/CProjects/LearnOpenGL/getting_started/shader/getting_started_fragment_shader.glsl");
+    Shader ourShader("getting_started/shader/getting_started_vertex_shader.glsl",
+                     "getting_started/shader/getting_started_fragment_shader.glsl");
 
     // 设置顶点数据和属性等
     // ------------------------------------------------------------------

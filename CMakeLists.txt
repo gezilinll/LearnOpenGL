@@ -1,5 +1,3 @@
-#需要通过brew安装glfw
-
 cmake_minimum_required(VERSION 3.10)
 
 project(LearnOpenGL)
