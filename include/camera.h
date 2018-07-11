@@ -91,7 +91,7 @@ public:
         yaw += xoffset;
         pitch += yoffset;
 
-        // Make sure that when pitch is out of bounds, screen doesn't get flipped
+        // 当俯仰角被限制在这个范围内时，屏幕就不会出现翻转的奇怪现象
         if (constrainPitch) {
             if (pitch > 89.0f)
                 pitch = 89.0f;
@@ -99,7 +99,6 @@ public:
                 pitch = -89.0f;
         }
 
-        // Update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
     }
 
