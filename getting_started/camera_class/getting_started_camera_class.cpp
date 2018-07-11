@@ -318,9 +318,10 @@ void scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {
 
 /**
  * 练习：
- * 对GLM的projection函数中的FoV和aspect-ratio参数进行实验。看能否搞懂它们是如何影响透视平截头体的。答案：通过修改glm::perspective的参数查看结果
  *
- * 将观察矩阵在各个方向上进行位移，来看看场景是如何改变的。注意把观察矩阵当成摄像机对象。答案：通过修改glm::mat4 view = glm::mat4(1.0f)该矩阵来观察结果
+ * 看看你是否能够修改摄像机类，使得其能够变成一个真正的FPS摄像机（也就是说不能够随意飞行）；你只能够呆在xz平面上。答案：https://learnopengl.com/code_viewer.php?code=getting-started/camera-exercise1
  *
- * 使用模型矩阵只让是3倍数的箱子旋转（以及第1个箱子），而让剩下的箱子保持静止。答案：https://learnopengl.com/code_viewer.php?code=getting-started/coordinate_systems-exercise3
+ * 试着创建你自己的LookAt函数，其中你需要手动创建一个我们在一开始讨论的观察矩阵。用你的函数实现来替换GLM的LookAt函数，看看它是否还能一样地工作：
+ * 答案：https://learnopengl.com/code_viewer.php?code=getting-started/camera-exercise2
+ *
  * */

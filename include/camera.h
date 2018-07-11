@@ -16,7 +16,7 @@ enum Camera_Movement {
 };
 
 // 相机默认参数
-const float YAW = -90.0f; //偏航角
+const float YAW = -90.0f; //偏航角，初始化为-90度因为最后于俯仰角结合生成cameraFront，cameraFront需要看向z的负半轴
 const float PITCH = 0.0f; //俯仰角
 const float SPEED = 2.5f; //速度
 const float SENSITIVITY = 0.1f; //敏感度
