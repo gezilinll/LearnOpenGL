@@ -14,7 +14,7 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 LINK_DIRECTORIES( /usr/local/lib )
 
-set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp std_image.cpp  include/shader_s.h include/stb_image.h)
+set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp std_image.cpp  include/camera.h include/shader_s.h include/stb_image.h)
 
 # Tutorial 1[入门-第一个窗口]
 add_executable(tutorial01_first_window
@@ -49,3 +49,9 @@ set(SOURCE_FILES_GETTING_STARTED_COORDINATE_SYSTEMS
         glad.c getting_started/coordinate_systems/getting_started_coordinate_systems.cpp std_image.cpp)
 add_executable(getting_started_coordinate_systems ${SOURCE_FILES_GETTING_STARTED_COORDINATE_SYSTEMS})
 target_link_libraries(getting_started_coordinate_systems libglfw3.a)
+
+# getting_started_camera_class[入门-摄像机]
+set(SOURCE_FILES_GETTING_STARTED_CAMERA_CLASS
+        glad.c getting_started/camera_class/getting_started_camera_class.cpp std_image.cpp)
+add_executable(getting_started_camera_class ${SOURCE_FILES_GETTING_STARTED_CAMERA_CLASS})
+target_link_libraries(getting_started_camera_class libglfw3.a)
