@@ -8,13 +8,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework AppKit -fra
 
 include_directories(/usr/include)
 
-include_directories(${PROJECT_SOURCE_DIR}/extern/glad/include)
+include_directories(extern/glad/include)
 
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 
-LINK_DIRECTORIES( /usr/local/lib )
+LINK_DIRECTORIES( /usr/local/lib ${PROJECT_SOURCE_DIR}/lib/)
 
-set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp std_image.cpp  include/camera.h include/shader_s.h include/stb_image.h)
+set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp std_image.cpp)
 
 # Tutorial 1[入门-第一个窗口]
 add_executable(tutorial01_first_window
