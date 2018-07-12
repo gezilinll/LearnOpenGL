@@ -55,3 +55,11 @@ set(SOURCE_FILES_GETTING_STARTED_CAMERA_CLASS
         glad.c getting_started/camera_class/getting_started_camera_class.cpp std_image.cpp)
 add_executable(getting_started_camera_class ${SOURCE_FILES_GETTING_STARTED_CAMERA_CLASS})
 target_link_libraries(getting_started_camera_class libglfw3.a)
+
+
+
+# lighting_colors[光照-颜色]
+set(SOURCE_FILES_LIGHTING_COLORS
+        glad.c lighting/colors/lighting_colors.cpp std_image.cpp)
+add_executable(lighting_colors ${SOURCE_FILES_LIGHTING_COLORS})
+target_link_libraries(lighting_colors libglfw3.a)
