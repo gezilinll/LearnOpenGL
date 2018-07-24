@@ -63,3 +63,9 @@ set(SOURCE_FILES_LIGHTING_COLORS
         glad.c lighting/colors/lighting_colors.cpp std_image.cpp)
 add_executable(lighting_colors ${SOURCE_FILES_LIGHTING_COLORS})
 target_link_libraries(lighting_colors libglfw3.a)
+
+# lighting_colors[光照-基础光照]
+set(SOURCE_FILES_BASIC_LIGHTING_SPECULAR
+        glad.c lighting/basic_lighting_specular/basic_lighting_specular.cpp std_image.cpp)
+add_executable(basic_lighting_specular ${SOURCE_FILES_BASIC_LIGHTING_SPECULAR})
+target_link_libraries(basic_lighting_specular libglfw3.a)
