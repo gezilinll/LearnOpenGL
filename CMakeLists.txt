@@ -66,6 +66,12 @@ target_link_libraries(lighting_colors libglfw3.a)
 
 # lighting_colors[光照-基础光照]
 set(SOURCE_FILES_BASIC_LIGHTING_SPECULAR
-        glad.c lighting/basic_lighting_specular/basic_lighting_specular.cpp std_image.cpp)
-add_executable(basic_lighting_specular ${SOURCE_FILES_BASIC_LIGHTING_SPECULAR})
-target_link_libraries(basic_lighting_specular libglfw3.a)
+        glad.c lighting/basic_lighting_specular/lighting_basic_lighting_specular.cpp std_image.cpp)
+add_executable(lighting_basic_lighting_specular ${SOURCE_FILES_BASIC_LIGHTING_SPECULAR})
+target_link_libraries(lighting_basic_lighting_specular libglfw3.a)
+
+# lighting_colors[光照-材质]
+set(SOURCE_FILES_MATERIALS
+        glad.c lighting/materials/lighting_materials.cpp std_image.cpp)
+add_executable(lighting_materials ${SOURCE_FILES_MATERIALS})
+target_link_libraries(lighting_materials libglfw3.a)
