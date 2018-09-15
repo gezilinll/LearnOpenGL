@@ -81,3 +81,9 @@ set(SOURCE_FILES_LIGHTING_MAPS_SPECULAR_MAP
         glad.c lighting/lighting_maps_specular_map/lighting_lighting_maps_specular_map.cpp std_image.cpp)
 add_executable(lighting_lighting_maps_specular_map ${SOURCE_FILES_LIGHTING_MAPS_SPECULAR_MAP})
 target_link_libraries(lighting_lighting_maps_specular_map libglfw3.a libboost_filesystem.a libboost_system.a)
+
+# lighting_colors[光照-透光物]
+set(SOURCE_FILES_CASTERS_SPOT_SOFT
+        glad.c lighting/casters_spot_soft/lighting_casters_spot_soft.cpp std_image.cpp)
+add_executable(lighting_casters_spot_soft ${SOURCE_FILES_CASTERS_SPOT_SOFT})
+target_link_libraries(lighting_casters_spot_soft libglfw3.a libboost_filesystem.a libboost_system.a)
