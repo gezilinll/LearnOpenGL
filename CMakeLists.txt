@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(LearnOpenGL)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework AppKit -framework CoreVideo -framework IOKit -framework CoreGraphics -framework CoreFoundation")
 
@@ -75,3 +75,9 @@ set(SOURCE_FILES_MATERIALS
         glad.c lighting/materials/lighting_materials.cpp std_image.cpp)
 add_executable(lighting_materials ${SOURCE_FILES_MATERIALS})
 target_link_libraries(lighting_materials libglfw3.a)
+
+# lighting_colors[光照-光照贴图]
+set(SOURCE_FILES_LIGHTING_MAPS_SPECULAR_MAP
+        glad.c lighting/lighting_maps_specular_map/lighting_lighting_maps_specular_map.cpp std_image.cpp)
+add_executable(lighting_lighting_maps_specular_map ${SOURCE_FILES_LIGHTING_MAPS_SPECULAR_MAP})
+target_link_libraries(lighting_lighting_maps_specular_map libglfw3.a libboost_filesystem.a libboost_system.a)
