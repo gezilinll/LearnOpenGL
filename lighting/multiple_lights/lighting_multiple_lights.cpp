@@ -68,10 +68,10 @@ int main() {
     glEnable(GL_DEPTH_TEST);
 
     //构建被光照与灯着色器程序
-    Shader lightingShader("lighting/casters_spot_soft/lighting_vertex_casters_spot_soft.glsl",
-                          "lighting/casters_spot_soft/lighting_fragment_casters_spot_soft.glsl");
-//    Shader lampShader("lighting/casters_spot_soft/lighting_vertex_casters_spot_soft_lamp.glsl",
-//                      "lighting/casters_spot_soft/lighting_fragment_casters_spot_soft_lamp.glsl");
+    Shader lightingShader("lighting/multiple_lights/lighting_vertex_multiple_lights.glsl",
+                          "lighting/multiple_lights/lighting_fragment_multiple_lights.glsl");
+    Shader lampShader("lighting/multiple_lights/lighting_vertex_multiple_lights_lamp.glsl",
+                      "lighting/multiple_lights/lighting_fragment_multiple_lights_lamp.glsl");
 
     // 设置顶点数据和法线数据等
     // ------------------------------------------------------------------
@@ -132,6 +132,14 @@ int main() {
             glm::vec3(1.5f, 2.0f, -2.5f),
             glm::vec3(1.5f, 0.2f, -1.5f),
             glm::vec3(-1.3f, 1.0f, -1.5f)
+    };
+
+    // positions of the point lights
+    glm::vec3 pointLightPositions[] = {
+            glm::vec3(0.7f, 0.2f, 2.0f),
+            glm::vec3(2.3f, -3.3f, -4.0f),
+            glm::vec3(-4.0f, 2.0f, -12.0f),
+            glm::vec3(0.0f, 0.0f, -3.0f)
     };
 
     unsigned int VBO, cubeVAO;
@@ -201,26 +209,65 @@ int main() {
         //因为我们开启了深度测试，所以需要清空颜色缓冲的同时清除深度缓冲，否则前一帧的深度信息仍然保存在缓冲中
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        //激活着色器设置物体属性
+        // 激活program设置必要的参数
         lightingShader.use();
-        lightingShader.setVec3("light.position", camera.position);
-        lightingShader.setVec3("light.direction", camera.front);
-        lightingShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
-        lightingShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
         lightingShader.setVec3("viewPos", camera.position);
-
-        //光照属性
-        lightingShader.setVec3("light.ambient", 0.1f, 0.1f, 0.1f);
-        // 我们把漫反射的比例稍微调高了一些，适合的光照情况在不同光照方法和环境下都不相同
-        // 每种环境和光照类型都需要一些调整，从而才能最好地适应你的环境
-        lightingShader.setVec3("light.diffuse", 0.8f, 0.8f, 0.8f);
-        lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        lightingShader.setFloat("light.constant", 1.0f);
-        lightingShader.setFloat("light.linear", 0.09f);
-        lightingShader.setFloat("light.quadratic", 0.032f);
-
-        // 材质属性
         lightingShader.setFloat("material.shininess", 32.0f);
+
+        /*
+           这里我们将设置5/6种我们所拥有类型的光源。
+           我们必须手动设置在PointLight数组种的每一个PointLight结构体种的每个uniform变量
+           我们也可以定义一个light类型的类去设置这些值以优化代码结构
+           或者使用更高效的的uniform途径的'Uniform buffer objects'，但是这是在我们后续的高级GLSL章节种才会介绍的
+        */
+        // 定向光
+        lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+        lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+        lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+        // 点光源1
+        lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
+        lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[0].constant", 1.0f);
+        lightingShader.setFloat("pointLights[0].linear", 0.09);
+        lightingShader.setFloat("pointLights[0].quadratic", 0.032);
+        // 点光源2
+        lightingShader.setVec3("pointLights[1].position", pointLightPositions[1]);
+        lightingShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[1].constant", 1.0f);
+        lightingShader.setFloat("pointLights[1].linear", 0.09);
+        lightingShader.setFloat("pointLights[1].quadratic", 0.032);
+        // 点光源3
+        lightingShader.setVec3("pointLights[2].position", pointLightPositions[2]);
+        lightingShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[2].constant", 1.0f);
+        lightingShader.setFloat("pointLights[2].linear", 0.09);
+        lightingShader.setFloat("pointLights[2].quadratic", 0.032);
+        // 点光源4
+        lightingShader.setVec3("pointLights[3].position", pointLightPositions[3]);
+        lightingShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
+        lightingShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
+        lightingShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("pointLights[3].constant", 1.0f);
+        lightingShader.setFloat("pointLights[3].linear", 0.09);
+        lightingShader.setFloat("pointLights[3].quadratic", 0.032);
+        // 聚光灯
+        lightingShader.setVec3("spotLight.position", camera.position);
+        lightingShader.setVec3("spotLight.direction", camera.front);
+        lightingShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+        lightingShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+        lightingShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+        lightingShader.setFloat("spotLight.constant", 1.0f);
+        lightingShader.setFloat("spotLight.linear", 0.09);
+        lightingShader.setFloat("spotLight.quadratic", 0.032);
+        lightingShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+        lightingShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
 
         //投影矩阵，该实例中每帧都可能存在变化
         glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float) SCR_WIDTH / (float) SCR_HEIGHT,
@@ -230,10 +277,6 @@ int main() {
         //视图矩阵[通过键盘或者鼠标输入来作为最终结果]
         glm::mat4 view = camera.GetViewMatrix();
         lightingShader.setMat4("view", view);
-
-        // 模型变换
-//        glm::mat4 model;
-//        lightingShader.setMat4("model", model);
 
         // 绑定漫反射贴图
         glActiveTexture(GL_TEXTURE0);
@@ -254,17 +297,20 @@ int main() {
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
-        // 灯光绘制，这里取消绘制，因为在我们只有一个聚光灯光源时渲染一个灯光这样会显得很奇怪
-//        lampShader.use();
-//        lampShader.setMat4("projection", projection);
-//        lampShader.setMat4("view", view);
-//        model = glm::mat4();
-//        model = glm::translate(model, lightPos);
-//        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-//        lampShader.setMat4("model", model);
+        // 绘制光源
+        lampShader.use();
+        lampShader.setMat4("projection", projection);
+        lampShader.setMat4("view", view);
 
-//        glBindVertexArray(lightVAO);
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
+        // 绘制我们拥有的光源
+        glBindVertexArray(lightVAO);
+        for (unsigned int i = 0; i < 4; i++) {
+            glm::mat4 model = glm::mat4();
+            model = glm::translate(model, pointLightPositions[i]);
+            model = glm::scale(model, glm::vec3(0.2f)); // 缩小光源
+            lampShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         //实际上不需要每次都解绑
         glBindVertexArray(0);
@@ -367,5 +413,6 @@ unsigned int loadTexture(char const *path) {
 /**
  * 练习：
  *
- * 尝试实验一下上面的所有光照类型和它们的片段着色器。试着对一些向量进行取反，并使用 < 来代替 >。试着解释不同视觉效果产生的原因。
+ * 你能通过调节光照属性变量，（大概地）重现最后一张图片上不同的氛围吗？
+ * 参考解答：https://learnopengl.com/code_viewer.php?code=lighting/multiple_lights-exercise2
  * */

@@ -87,3 +87,9 @@ set(SOURCE_FILES_CASTERS_SPOT_SOFT
         glad.c lighting/casters_spot_soft/lighting_casters_spot_soft.cpp std_image.cpp)
 add_executable(lighting_casters_spot_soft ${SOURCE_FILES_CASTERS_SPOT_SOFT})
 target_link_libraries(lighting_casters_spot_soft libglfw3.a libboost_filesystem.a libboost_system.a)
+
+# lighting_colors[光照-多光源]
+set(SOURCE_FILES_MULTIPLE_LIGHTS
+        glad.c lighting/multiple_lights/lighting_multiple_lights.cpp std_image.cpp)
+add_executable(lighting_multiple_lights ${SOURCE_FILES_MULTIPLE_LIGHTS})
+target_link_libraries(lighting_multiple_lights libglfw3.a libboost_filesystem.a libboost_system.a)
