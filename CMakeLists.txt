@@ -93,3 +93,9 @@ set(SOURCE_FILES_MULTIPLE_LIGHTS
         glad.c lighting/multiple_lights/lighting_multiple_lights.cpp std_image.cpp)
 add_executable(lighting_multiple_lights ${SOURCE_FILES_MULTIPLE_LIGHTS})
 target_link_libraries(lighting_multiple_lights libglfw3.a libboost_filesystem.a libboost_system.a)
+
+# demo_tesselation_shader[Demo-细分着色器]
+set(SOURCE_FILES_TESSELATION_SHADER
+        glad.c demo/tesselation_shader/demo_tesselation_shader.cpp)
+add_executable(demo_tesselation_shader ${SOURCE_FILES_TESSELATION_SHADER})
+target_link_libraries(demo_tesselation_shader libglfw3.a)
