@@ -96,6 +96,6 @@ target_link_libraries(lighting_multiple_lights libglfw3.a libboost_filesystem.a 
 
 # demo_tesselation_shader[Demo-细分着色器]
 set(SOURCE_FILES_TESSELATION_SHADER
-        glad.c demo/tesselation_shader/demo_tesselation_shader.cpp)
+        glad.c tesselation_shader/demo_tesselation_shader.cpp)
 add_executable(demo_tesselation_shader ${SOURCE_FILES_TESSELATION_SHADER})
 target_link_libraries(demo_tesselation_shader libglfw3.a)
