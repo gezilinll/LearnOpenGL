@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/b_triangle"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="绘制三角形"/>
+
+    <Button
+        android:id="@+id/b_texture"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="纹理"/>
+
+    <Button
+        android:id="@+id/model_transition"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="模型变换"/>
+
+    <Button
+        android:id="@+id/coordinate_systems"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="坐标系统"/>
+</LinearLayout>

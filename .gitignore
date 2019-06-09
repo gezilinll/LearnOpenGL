@@ -1,2 +1,11 @@
 .idea/
 cmake-build-debug/
+gles/android/build/*
+*.iml
+gles/android/.gradle
+gles/android/local.properties
+gles/android/.idea/workspace.xml
+gles/android/.idea/libraries
+gles/android/.DS_Store
+gles/android/captures
+gles/android/.externalNativeBuild
