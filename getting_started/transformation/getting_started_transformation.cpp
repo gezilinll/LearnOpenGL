@@ -56,10 +56,10 @@ int main() {
     // ------------------------------------------------------------------
     float vertices[] = {
             // positions          // texture coords
-            0.5f,  0.5f, 0.0f,   1.0f, 1.0f, // top right
-            0.5f, -0.5f, 0.0f,   1.0f, 0.0f, // bottom right
-            -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, // bottom left
-            -0.5f,  0.5f, 0.0f,   0.0f, 1.0f  // top left
+            0.5f, 0.5f, 0.0f, 1.0f, 1.0f, // top right
+            0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
+            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
+            -0.5f, 0.5f, 0.0f, 0.0f, 1.0f  // top left
     };
     unsigned int indices[] = {
             0, 1, 3, // first triangle
@@ -164,6 +164,9 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         glm::mat4 transform = glm::mat4(1.0f);
+        //实际执行顺序是反过来的，模型变换转为世界坐标系，坐标系不变的情况下考虑
+        //按照代码顺序，如果先平移，再旋转，那么实际是先绕着中心点旋转后再平移对应的距离
+        //如果是先旋转再平移，那么实际就是先平移到设定的距离，然后绕坐标系的中心点旋转，就会出现物体绕中心点旋转的现象
         transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
         transform = glm::rotate(transform, (float) glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 

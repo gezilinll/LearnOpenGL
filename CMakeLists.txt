@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(LearnOpenGL)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework AppKit -framework CoreVideo -framework IOKit -framework CoreGraphics -framework CoreFoundation")
 
@@ -66,6 +66,36 @@ target_link_libraries(lighting_colors libglfw3.a)
 
 # lighting_colors[光照-基础光照]
 set(SOURCE_FILES_BASIC_LIGHTING_SPECULAR
-        glad.c lighting/basic_lighting_specular/basic_lighting_specular.cpp std_image.cpp)
-add_executable(basic_lighting_specular ${SOURCE_FILES_BASIC_LIGHTING_SPECULAR})
-target_link_libraries(basic_lighting_specular libglfw3.a)
+        glad.c lighting/basic_lighting_specular/lighting_basic_lighting_specular.cpp std_image.cpp)
+add_executable(lighting_basic_lighting_specular ${SOURCE_FILES_BASIC_LIGHTING_SPECULAR})
+target_link_libraries(lighting_basic_lighting_specular libglfw3.a)
+
+# lighting_colors[光照-材质]
+set(SOURCE_FILES_MATERIALS
+        glad.c lighting/materials/lighting_materials.cpp std_image.cpp)
+add_executable(lighting_materials ${SOURCE_FILES_MATERIALS})
+target_link_libraries(lighting_materials libglfw3.a)
+
+# lighting_colors[光照-光照贴图]
+set(SOURCE_FILES_LIGHTING_MAPS_SPECULAR_MAP
+        glad.c lighting/lighting_maps_specular_map/lighting_lighting_maps_specular_map.cpp std_image.cpp)
+add_executable(lighting_lighting_maps_specular_map ${SOURCE_FILES_LIGHTING_MAPS_SPECULAR_MAP})
+target_link_libraries(lighting_lighting_maps_specular_map libglfw3.a libboost_filesystem.a libboost_system.a)
+
+# lighting_colors[光照-透光物]
+set(SOURCE_FILES_CASTERS_SPOT_SOFT
+        glad.c lighting/casters_spot_soft/lighting_casters_spot_soft.cpp std_image.cpp)
+add_executable(lighting_casters_spot_soft ${SOURCE_FILES_CASTERS_SPOT_SOFT})
+target_link_libraries(lighting_casters_spot_soft libglfw3.a libboost_filesystem.a libboost_system.a)
+
+# lighting_colors[光照-多光源]
+set(SOURCE_FILES_MULTIPLE_LIGHTS
+        glad.c lighting/multiple_lights/lighting_multiple_lights.cpp std_image.cpp)
+add_executable(lighting_multiple_lights ${SOURCE_FILES_MULTIPLE_LIGHTS})
+target_link_libraries(lighting_multiple_lights libglfw3.a libboost_filesystem.a libboost_system.a)
+
+# demo_tesselation_shader[Demo-细分着色器]
+set(SOURCE_FILES_TESSELATION_SHADER
+        glad.c tesselation_shader/demo_tesselation_shader.cpp)
+add_executable(demo_tesselation_shader ${SOURCE_FILES_TESSELATION_SHADER})
+target_link_libraries(demo_tesselation_shader libglfw3.a)
