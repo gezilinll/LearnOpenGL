@@ -14,15 +14,15 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 LINK_DIRECTORIES( /usr/local/lib ${PROJECT_SOURCE_DIR}/lib/)
 
-set(SOURCE_FILES glad.c getting_started/red_triangle/tutorial02_red_triangle.cpp std_image.cpp)
-
 # Tutorial 1[入门-第一个窗口]
 add_executable(tutorial01_first_window
         glad.c getting_started/first_window/tutorial01_first_window.cpp)
 target_link_libraries(tutorial01_first_window libglfw3.a)
 
 # Tutorial 2[入门-三角形]
-add_executable(tutorial02_red_triangle ${SOURCE_FILES})
+set(SOURCE_FILES_RED_TRIANGLE
+        glad.c getting_started/shader/getting_started_shader.cpp std_image.cpp)
+add_executable(tutorial02_red_triangle ${SOURCE_FILES_RED_TRIANGLE})
 target_link_libraries(tutorial02_red_triangle libglfw3.a)
 
 # getting_started_shader[入门-着色器]
@@ -99,3 +99,9 @@ set(SOURCE_FILES_TESSELATION_SHADER
         glad.c tesselation_shader/demo_tesselation_shader.cpp)
 add_executable(demo_tesselation_shader ${SOURCE_FILES_TESSELATION_SHADER})
 target_link_libraries(demo_tesselation_shader libglfw3.a)
+
+# model_loading[模型加载-模型]
+set(SOURCE_FILES_MODEL_LOADING
+        glad.c model_loading/model_loading.cpp std_image.cpp)
+add_executable(model_loading ${SOURCE_FILES_MODEL_LOADING})
+target_link_libraries(model_loading libglfw3.a libboost_filesystem.a libboost_system.a libassimp.a)
