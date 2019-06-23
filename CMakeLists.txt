@@ -105,3 +105,10 @@ set(SOURCE_FILES_MODEL_LOADING
         glad.c model_loading/model_loading.cpp std_image.cpp)
 add_executable(model_loading ${SOURCE_FILES_MODEL_LOADING})
 target_link_libraries(model_loading libglfw3.a libboost_filesystem.a libboost_system.a libassimp.a)
+
+
+# stencil_testing[高级OpenGL-模板测试]
+set(SOURCE_FILES_STENCIL_TESTING
+        glad.c advanced_opengl/stencil_testing/stencil_testing.cpp std_image.cpp)
+add_executable(stencil_testing ${SOURCE_FILES_STENCIL_TESTING})
+target_link_libraries(stencil_testing libglfw3.a libboost_filesystem.a libboost_system.a)
